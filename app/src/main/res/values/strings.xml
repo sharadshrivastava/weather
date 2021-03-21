@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="network_error">Network Error</string>
+    <string name="response_error">Something went wrong</string>
+    <string name="unauthorized">Unauthorized</string>
+    <string name="not_found">Not found</string>
+    <string name="internal_err">Internal Server Error</string>
+    <string name="svc_un_avail">Service Unavailable</string>
+    <string name="connection_error">Failed to connect</string>
+    <string name="timeout">Timeout</string>
+    <string name="recent_search">Recent Search</string>
+    <string name="city_hint">Enter City, Country</string>
+    <string name="zip_hint">Enter Zip Code, Country</string>
+    <string name="loc_hint">Enter Lat, Long</string>
+    <string name="filter">Filter List</string>
+    <string name="images">Images:%1$d</string>
+    <string name="hello">Hello %1$s %2$s</string>
+    <string name="temperature">%1$s \u2103</string>
+    <string name="real_feel">Real Feel %1$s \u2103</string>
+    <string name="min_temp">Min Temp %1$s \u2103</string>
+    <string name="max_temp">Max Temp %1$s \u2103</string>
+    <string name="percent">%</string>
+    <string name="humidity">HUMIDITY %1$d%2$s</string>
+    <string name="wind">WIND SPEED %1$s KPH</string>
+    <string name="delete_all">Delete All</string>
+
+
+    <string-array name="search_array">
+        <item>City Name</item>
+        <item>Zip Code</item>
+        <item>Location</item>
+    </string-array>
+</resources>

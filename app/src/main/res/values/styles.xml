@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/text_size_header</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="BlackTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="BlackTextStyle.CityStyle">
+        <item name="android:textColor">@color/colorCity</item>
+        <item name="android:textSize">@dimen/text_size_header</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BlackTextStyle.SunnyStyle">
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+        <item name="android:fontFamily">sans-serif-condensed-medium</item>
+    </style>
+
+    <style name="BlackTextStyle.TempStyle">
+        <item name="android:textSize">@dimen/text_size_header</item>
+    </style>
+
+    <style name="BlackTextStyle.DescStyle">
+        <item name="android:textSize">@dimen/text_size_med</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="BlackTextStyle.DescStyle.RealFeel">
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+    <style name="LinkTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/text_size_header</item>
+    </style>
+
+</resources>

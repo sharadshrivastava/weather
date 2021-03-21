@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+
+        <variable
+            name="vm"
+            type="com.test.app.ui.home.HomeViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/std_margin"
+        android:layout_marginEnd="@dimen/std_margin">
+
+        <Spinner
+            android:id="@+id/searchSpinner"
+            android:layout_width="@dimen/spinner_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/spinner_bg"
+            android:dropDownWidth="@dimen/spinner_drop_width"
+            android:entries="@array/search_array"
+            android:popupBackground="@color/colorPrimary"
+            android:theme="@style/Spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/searchEt"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/edit_text_height"
+            android:background="@drawable/rectangle"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="@string/city_hint"
+            android:singleLine="true"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintStart_toEndOf="@id/searchSpinner"
+            app:layout_constraintEnd_toStartOf="@id/submitBtn"
+            app:layout_constraintTop_toTopOf="@+id/searchSpinner" />
+
+        <ImageButton
+            android:id="@+id/submitBtn"
+            android:layout_width="@dimen/submit_width"
+            android:layout_height="@dimen/edit_text_height"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/search"
+            android:clickable= "@{isLoading ? false : true}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/searchEt" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/weatherCard"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginTop="@dimen/std_large_margin"
+            android:background="@color/colorWhite"
+            android:elevation="@dimen/std_short_margin"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/std_tiny_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchSpinner">
+
+            <ProgressBar
+                android:id="@+id/weatherLoading"
+                android:layout_width="@dimen/submit_width"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:visibility="@{isLoading ? View.VISIBLE : View.GONE}" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/std_margin"
+                android:layout_marginTop="@dimen/std_margin"
+                android:visibility="@{isLoading ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:id="@+id/cityName"
+                    style="@style/BlackTextStyle.CityStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{vm.weatherObservableField.name}'
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/countryName"
+                    style="@style/BlackTextStyle.CityStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/std_short_margin"
+                    android:text='@{vm.weatherObservableField.sys.country}'
+                    app:layout_constraintStart_toEndOf="@id/cityName"
+                    app:layout_constraintTop_toTopOf="@id/cityName" />
+
+                <TextView
+                    android:id="@+id/sunny"
+                    style="@style/BlackTextStyle.SunnyStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/std_short_margin"
+                    android:text='@{vm.weatherObservableField.weather.get(0).description}'
+                    app:layout_constraintStart_toStartOf="@id/cityName"
+                    app:layout_constraintTop_toBottomOf="@id/cityName" />
+
+                <TextView
+                    android:id="@+id/temperature"
+                    style="@style/BlackTextStyle.TempStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/cityName"
+                    app:layout_constraintTop_toBottomOf="@id/sunny" />
+
+                <TextView
+                    android:id="@+id/realFeel"
+                    style="@style/BlackTextStyle.DescStyle.RealFeel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/cityName"
+                    app:layout_constraintTop_toBottomOf="@id/temperature" />
+
+                <TextView
+                    android:id="@+id/tempMin"
+                    style="@style/BlackTextStyle.DescStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/std_margin"
+                    app:layout_constraintStart_toStartOf="@id/cityName"
+                    app:layout_constraintTop_toBottomOf="@id/realFeel" />
+
+                <TextView
+                    android:id="@+id/tempMax"
+                    style="@style/BlackTextStyle.DescStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/cityName"
+                    app:layout_constraintTop_toBottomOf="@id/tempMin" />
+
+                <TextView
+                    android:id="@+id/humidity"
+                    style="@style/BlackTextStyle.DescStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/std_margin"
+                    app:layout_constraintStart_toStartOf="@id/cityName"
+                    app:layout_constraintTop_toBottomOf="@id/tempMax" />
+
+                <TextView
+                    android:id="@+id/windSpeed"
+                    style="@style/BlackTextStyle.DescStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/cityName"
+                    app:layout_constraintTop_toBottomOf="@id/humidity" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/recentCard"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:elevation="@dimen/std_short_margin"
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/std_tiny_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weatherCard">
+
+            <TextView
+                style="@style/LinkTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/std_margin"
+                android:text="@string/recent_search" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="@dimen/std_margin"
+                android:src="@drawable/arrow_recent" />
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

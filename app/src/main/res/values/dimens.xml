@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="std_tiny_margin">4dp</dimen>
+    <dimen name="std_short_margin">8dp</dimen>
+    <dimen name="std_short_med_margin">12dp</dimen>
+    <dimen name="std_margin">16dp</dimen>
+    <dimen name="std_med_margin">20dp</dimen>
+    <dimen name="std_large_margin">24dp</dimen>
+    <dimen name="std_large_med_margin">28dp</dimen>
+    <dimen name="std_xlarge_margin">32dp</dimen>
+    <dimen name="text_margin">50dp</dimen>
+    <dimen name="edit_text_width">220dp</dimen>
+    <dimen name="spinner_width">120dp</dimen>
+    <dimen name="spinner_drop_width">150dp</dimen>
+    <dimen name="edit_text_height">46dp</dimen>
+    <dimen name="submit_width">40dp</dimen>
+    <dimen name="row_height">56dp</dimen>
+    <dimen name="img_width">60dp</dimen>
+
+
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_med">15sp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_header">20sp</dimen>
+    <dimen name="text_size_xlarge">24sp</dimen>
+    <dimen name="text_size_otp">56sp</dimen>
+</resources>
