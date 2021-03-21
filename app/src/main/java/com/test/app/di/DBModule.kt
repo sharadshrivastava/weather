@@ -6,9 +6,12 @@ import com.test.app.data.db.AppDB
 import com.test.app.data.db.AppDao
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class DBModule {
 
     @Provides

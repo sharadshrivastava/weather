@@ -3,24 +3,18 @@ package com.test.app.ui.home
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.test.app.WeatherApp
 import com.test.app.data.AppRepository
 import com.test.app.data.network.model.Response
 import com.test.app.data.network.wrapper.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
-
-    @Inject
-    lateinit var appRepository: AppRepository
+@HiltViewModel
+class HomeViewModel @Inject constructor(private val appRepository: AppRepository): ViewModel() {
 
     var data:Response? = null
     val weatherObservableField = ObservableField<Response?>()
-
-    init {
-        WeatherApp.get()?.component?.inject(this)
-    }
 
     fun postResponse(response:Response?){
         data = response

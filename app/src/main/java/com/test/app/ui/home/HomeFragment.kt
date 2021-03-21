@@ -19,8 +19,10 @@ import com.test.app.data.network.model.Response
 import com.test.app.data.network.wrapper.Resource
 import com.test.app.databinding.HomeFragmentBinding
 import com.test.app.util.Utils
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.home_fragment.*
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private val vm: HomeViewModel by viewModels()

@@ -1,5 +1,6 @@
 package com.test.app.ui
 
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
@@ -15,11 +16,13 @@ import org.junit.runner.RunWith
 class MainActivityTest {
 
     @Rule @JvmField
-    var rule = ActivityTestRule(MainActivity::class.java)
+    var rule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun testFragmentLoaded() {
-        val fragment = rule.activity.navHostFragment
-        Assert.assertNotNull(fragment)
+        val fragment = rule.scenario.onActivity {
+            val fragment = it.navHostFragment
+            Assert.assertNotNull(fragment)
+        }
     }
 }

@@ -1,19 +1,14 @@
 package com.test.app
 
 import android.app.Application
-import com.test.app.di.AppComponent
-import com.test.app.di.ApplicationModule
-import com.test.app.di.DaggerAppComponent
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class WeatherApp : Application() {
-
-    lateinit var component: AppComponent
 
     override fun onCreate() {
         super.onCreate()
-
         instance = this
-        component = DaggerAppComponent.builder().applicationModule(ApplicationModule(this)).build()
     }
 
     companion object {

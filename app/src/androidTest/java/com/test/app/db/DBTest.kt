@@ -8,7 +8,9 @@ import androidx.test.filters.LargeTest
 import com.test.app.data.db.AppDB
 import com.test.app.data.db.AppDao
 import com.test.app.data.db.entity.City
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -31,9 +33,12 @@ class DBTest {
     @Test
     fun testInsert() {
         runBlocking {
-            appDao.insert(City("Sydney", "AU"))
-            val cities = appDao.getAll()
-            Assert.assertEquals("Sydney", cities[0].cityName)
+            withContext(Dispatchers.Main) {
+                appDao.insert(City("Sydney", "AU"))
+                appDao.getAll().observeForever {
+                    Assert.assertEquals("Sydney", it[0].cityName)
+                }
+            }
         }
     }
 

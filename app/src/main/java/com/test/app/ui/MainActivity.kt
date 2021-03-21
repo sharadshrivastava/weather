@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.test.app.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_activity.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

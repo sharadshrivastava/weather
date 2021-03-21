@@ -11,8 +11,7 @@ import javax.inject.Singleton
 
 @Singleton
 class AppRepository @Inject constructor(
-    @set:Inject
-    var weatherApi: WeatherApi, @set:Inject var appDao: AppDao?
+    var weatherApi: WeatherApi, var appDao: AppDao?
 ) {
 
     //As of now retrofit doesn't support error handling with coroutines so errors need to be handled using try catch.

@@ -13,8 +13,10 @@ import com.test.app.R
 import com.test.app.ui.common.SwipeToDeleteCallback
 import com.test.app.ui.common.VerticalSpaceItemDecoration
 import com.test.app.util.Utils
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.recent_search_fragment.*
 
+@AndroidEntryPoint
 class RecentSearchFragment : Fragment(), RecentSearchAdapter.OnItemClickListener {
 
     private val vm: RecentSearchViewModel by viewModels()
