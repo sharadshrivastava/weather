@@ -18,7 +18,7 @@ import com.test.app.R
 import com.test.app.data.network.model.Response
 import com.test.app.data.network.wrapper.Resource
 import com.test.app.databinding.HomeFragmentBinding
-import com.test.app.util.Utils
+import com.test.app.data.common.Utils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.home_fragment.*
 

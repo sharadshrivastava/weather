@@ -1,4 +1,4 @@
-package com.test.app.util
+package com.test.app.data.common
 
 import android.content.Context
 

@@ -3,6 +3,7 @@ package com.test.app.util
 import android.content.Context
 import android.content.res.Resources
 import android.util.DisplayMetrics
+import com.test.app.data.common.Utils
 
 import org.junit.Before
 import org.junit.Test
