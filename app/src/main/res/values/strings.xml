@@ -28,6 +28,5 @@
     <string-array name="search_array">
         <item>City Name</item>
         <item>Zip Code</item>
-        <item>Location</item>
     </string-array>
 </resources>

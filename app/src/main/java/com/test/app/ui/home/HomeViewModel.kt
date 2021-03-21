@@ -39,16 +39,6 @@ class HomeViewModel : ViewModel() {
         emit(response)
     }
 
-    fun weatherByLocation(latLong: String) = liveData(Dispatchers.IO) {
-        val list = latLong.split(",")
-        val lat = list.getOrNull(0)
-        val long = list.getOrNull(1)
-
-        emit(Resource.loading())
-        val response = appRepository.weatherByLocation(lat?:"", long?:"")
-        emit(response)
-    }
-
     fun saveCity(city: String?, country:String?) = liveData(Dispatchers.IO) {
         emit(appRepository.saveCity(city, country))
     }

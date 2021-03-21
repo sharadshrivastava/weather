@@ -13,15 +13,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
 import com.test.app.R
 import com.test.app.data.network.model.Response
 import com.test.app.data.network.wrapper.Resource
 import com.test.app.databinding.HomeFragmentBinding
 import com.test.app.util.Utils
-import com.test.app.ui.common.toEditable
 import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
@@ -29,18 +26,12 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private val vm: HomeViewModel by viewModels()
     private lateinit var binding: HomeFragmentBinding
     private var searchType: SearchType = SearchType.CityName
-    private lateinit var locationClient: FusedLocationProviderClient
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        locationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
         return binding.root
     }
@@ -89,18 +80,15 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 SearchType.ZipCode -> {
                     weatherByZipCode(searchEt.text.toString())
                 }
-                SearchType.Location -> {
-                    weatherByLocation(searchEt.text.toString())
-                }
             }
         }
     }
 
     private fun weatherByCity(cityName: String) = handleResponse(vm.weatherByCity(cityName))
 
+    //Expecting, zipCode, country code. like 2000,AU.
+    // UI checking is not done as of now.
     private fun weatherByZipCode(zipCode: String) = handleResponse(vm.weatherByZipCode(zipCode))
-
-    private fun weatherByLocation(latLong: String) = handleResponse(vm.weatherByLocation(latLong))
 
     private fun handleResponse(liveData: LiveData<Resource<Response>>) {
         liveData.observe(viewLifecycleOwner, Observer {
@@ -152,12 +140,6 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         })
     }
 
-    private fun lastLocation() {
-        locationClient.lastLocation.addOnSuccessListener {
-            searchEt.text = "${it?.latitude},${it?.longitude}".toEditable()
-        }
-    }
-
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
         when (pos) {
             SearchType.CityName.pos -> {
@@ -170,11 +152,6 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 searchEt.hint = context?.getString(R.string.zip_hint)
                 searchType = SearchType.ZipCode
             }
-            SearchType.Location.pos -> {
-                lastLocation()
-                searchEt.hint = context?.getString(R.string.loc_hint)
-                searchType = SearchType.Location
-            }
         }
     }
 
@@ -182,7 +159,6 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     enum class SearchType(val pos: Int) {
         CityName(0),
-        ZipCode(1),
-        Location(2)
+        ZipCode(1)
     }
 }

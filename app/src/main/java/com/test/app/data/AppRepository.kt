@@ -32,13 +32,6 @@ class AppRepository @Inject constructor(
             ResponseHandler.handleException(e)
         }
 
-    suspend fun weatherByLocation(lat: String, long: String): Resource<Response> =
-        try {
-            ResponseHandler.handleSuccess(weatherApi.weatherByLocation(lat, long))
-        } catch (e: Exception) {
-            ResponseHandler.handleException(e)
-        }
-
     fun getAllCity() = appDao?.getAll()
 
     suspend fun saveCity(city: String?, country: String?) = appDao?.insert(City(city, country))

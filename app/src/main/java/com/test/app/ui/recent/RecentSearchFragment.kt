@@ -23,11 +23,6 @@ class RecentSearchFragment : Fragment(), RecentSearchAdapter.OnItemClickListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-
-        // To handle device back button.
-        /*requireActivity().onBackPressedDispatcher.addCallback(this) {
-            handleBack()
-        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -100,17 +95,7 @@ class RecentSearchFragment : Fragment(), RecentSearchAdapter.OnItemClickListener
             R.id.delete_all -> {
                 vm.deleteAll(); true
             }
-            // To handle toolbar back button.
-            /*android.R.id.home -> {
-                handleBack(); true
-            }*/
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun handleBack() {
-        findNavController(this).navigate(
-            RecentSearchFragmentDirections.recentSearchFragmentAction(Utils.INVALID)
-        )
     }
 }
